@@ -37,3 +37,12 @@
 .btn-pill:active {
 	transform: translateY(1px);
 }
+
+/* Reusable gradient text (matches hero) */
+.text-gradient {
+	background: linear-gradient(90deg, #00013f, #5daaa1);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+}
