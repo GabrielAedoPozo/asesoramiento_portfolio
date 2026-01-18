@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Reusable pill button matching provided design */
+.btn-pill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.75rem 2rem; /* ~12px x 32px */
+	border-radius: 9999px;
+	border: 2px solid rgba(86, 167, 192, 0.35);
+	background: linear-gradient(
+		180deg,
+		rgba(79, 180, 180, 0.12),
+		rgba(84, 194, 185, 0.116)
+	);
+	color: #56a7c0; /* match H1 gradient end color */
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	text-align: center;
+	transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.btn-pill:hover {
+	background: linear-gradient(
+		180deg,
+		rgba(86, 167, 192, 0.18),
+		rgba(86, 167, 192, 0.10)
+	);
+}
+
+.btn-pill:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(86, 167, 192, 0.25), 0 6px 18px rgba(86, 167, 192, 0.18);
+}
+
+.btn-pill:active {
+	transform: translateY(1px);
+}
