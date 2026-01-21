@@ -8,16 +8,117 @@
 
     <div class="flex flex-none justify-center items-center h-screen gap-30 pb-20">
         <div>
-            <button class="btn-pill mb-5">Consultor Estratégico Senior</button>
+            <button class="btn-pill mb-5 hero-pill">Consultor Estratégico Senior</button>
 
             <div>
-                <h1 class="text-gradient text-8xl font-black">Consultoría <br /> Estratégica <br /> Multisectorial</h1>
-                <p class="text-2xl mt-5 text-black/70">Transformando la complejidad industrial en eficiancia <br /> operativa. Especialista en optimización de procesos y visión <br /> de mercado global</p>
+                <h1 class="text-gradient text-8xl font-black hero-title">
+                    <span class="hero-line">Consultoría</span> <br /> 
+                    <span class="hero-line">Estratégica</span> <br /> 
+                    <span class="hero-line">Multisectorial</span>
+                </h1>
+                <p class="text-2xl mt-5 text-black/70 hero-subtitle">Transformando la complejidad industrial en eficiancia <br /> operativa. Especialista en optimización de procesos y visión <br /> de mercado global</p>
+                
+                <div class="mt-10">
+                    <a href="/asesoramiento_portfolio/hoja.pdf" download class="inline-flex items-center gap-2 px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 hero-cv-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Descargar Currículum
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div>
+        <div class="hero-image">
             <img src="/asesoramiento_portfolio/foto.JPG" alt="" class="h-125" />
         </div>
     </div>
 </main>
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+// Ejecutar cuando el DOM esté listo
+const initHeroAnimations = () => {
+  // Verificar que los elementos existan
+  const heroPill = document.querySelector('.hero-pill');
+  const heroLines = document.querySelectorAll('.hero-line');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  const heroImage = document.querySelector('.hero-image');
+  const heroCvBtn = document.querySelector('.hero-cv-btn');
+
+  if (!heroPill || heroLines.length === 0) {
+    console.warn('Hero elements not found, skipping animations');
+    return;
+  }
+
+  // Animación de entrada del hero
+  gsap.from('.hero-pill', {
+    opacity: 0,
+    y: -50,
+    duration: 0.8,
+    ease: 'power3.out',
+    onComplete: () => gsap.set('.hero-pill', { clearProps: 'all' })
+  });
+
+  // Animación de título con efecto de líneas
+  gsap.from('.hero-line', {
+    opacity: 0,
+    x: -100,
+    duration: 1,
+    stagger: 0.2,
+    ease: 'power4.out',
+    delay: 0.3,
+    onComplete: () => gsap.set('.hero-line', { clearProps: 'all' })
+  });
+
+  // Animación de subtítulo
+  if (heroSubtitle) {
+    gsap.from('.hero-subtitle', {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 1,
+      ease: 'power2.out',
+      onComplete: () => gsap.set('.hero-subtitle', { clearProps: 'all' })
+    });
+  }
+
+  // Animación de imagen con rotación sutil
+  if (heroImage) {
+    gsap.from('.hero-image', {
+      opacity: 0,
+      scale: 0.8,
+      rotation: -5,
+      duration: 1.2,
+      delay: 0.5,
+      ease: 'elastic.out(1, 0.5)',
+      onComplete: () => gsap.set('.hero-image', { clearProps: 'all' })
+    });
+  }
+
+  // Animación del botón de CV
+  if (heroCvBtn) {
+    gsap.from('.hero-cv-btn', {
+      opacity: 0,
+      y: 20,
+      scale: 0.9,
+      duration: 0.8,
+      delay: 1.3,
+      ease: 'back.out(1.7)',
+      onComplete: () => gsap.set('.hero-cv-btn', { clearProps: 'all' })
+    });
+  }
+};
+
+// Ejecutar inmediatamente si el DOM está listo, o esperar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroAnimations);
+} else {
+  setTimeout(initHeroAnimations, 100);
+}
+</script>

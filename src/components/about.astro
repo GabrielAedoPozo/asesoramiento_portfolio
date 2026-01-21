@@ -1,0 +1,175 @@
+<section class="relative overflow-hidden py-28 px-6 bg-white">
+  <!-- Fondos decorativos -->
+  <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute top-1/2 -left-40 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="about-left">
+      <h2 class="text-6xl md:text-7xl font-black leading-[1.05] mb-10">
+        <span class="block text-gradient about-title-line">+35 años</span>
+        <span class="block text-slate-900 about-title-line">liderando</span>
+        <span class="block text-gradient about-title-line">operaciones complejas</span>
+      </h2>
+
+      <p class="text-lg text-slate-600 max-w-xl leading-relaxed about-text">
+        Gerente Comercial y de Operaciones con amplia experiencia en transformar
+        procesos industriales complejos en sistemas eficientes, escalables y
+        orientados a resultados medibles.
+      </p>
+
+      <!-- Skills -->
+      <div class="mt-12 flex flex-wrap gap-3 max-w-xl">
+        <span class="about-skill px-5 py-2 rounded-full bg-slate-100 text-sm text-slate-700 hover:bg-gradient-to-r hover:from-[#00013f] hover:to-[#5daaa1] hover:text-white transition">
+          Gestión de Equipos
+        </span>
+        <span class="about-skill px-5 py-2 rounded-full bg-slate-100 text-sm text-slate-700 hover:bg-gradient-to-r hover:from-[#00013f] hover:to-[#5daaa1] hover:text-white transition">
+          Ventas Estratégicas
+        </span>
+        <span class="about-skill px-5 py-2 rounded-full bg-slate-100 text-sm text-slate-700 hover:bg-gradient-to-r hover:from-[#00013f] hover:to-[#5daaa1] hover:text-white transition">
+          Optimización de Procesos
+        </span>
+        <span class="about-skill px-5 py-2 rounded-full bg-slate-100 text-sm text-slate-700 hover:bg-gradient-to-r hover:from-[#00013f] hover:to-[#5daaa1] hover:text-white transition">
+          Proyectos de Alto Ritmo
+        </span>
+        <span class="about-skill px-5 py-2 rounded-full bg-slate-100 text-sm text-slate-700 hover:bg-gradient-to-r hover:from-[#00013f] hover:to-[#5daaa1] hover:text-white transition">
+          Open Business
+        </span>
+        <span class="about-skill px-5 py-2 rounded-full bg-slate-100 text-sm text-slate-700 hover:bg-gradient-to-r hover:from-[#00013f] hover:to-[#5daaa1] hover:text-white transition">
+          Sector Público & Privado
+        </span>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="space-y-8 about-right">
+
+      <div class="about-card group bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition">
+        <p class="text-5xl font-black text-gradient">35+</p>
+        <p class="mt-3 text-slate-900 font-semibold text-lg">
+          Años de Experiencia
+        </p>
+        <p class="text-sm text-slate-500 mt-1">
+          Procesos Industriales y Gestión Comercial
+        </p>
+      </div>
+
+      <div class="about-card group bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition">
+        <p class="text-3xl font-black text-gradient">Sectores</p>
+        <p class="mt-3 text-slate-900 font-semibold text-lg">
+          Público y Privado
+        </p>
+        <p class="text-sm text-slate-500 mt-1">
+          Experiencia sólida en ambos entornos
+        </p>
+      </div>
+
+      <div class="about-card group bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition">
+        <p class="text-3xl font-black text-gradient">Enfoque</p>
+        <p class="mt-3 text-slate-900 font-semibold text-lg">
+          Orientado a Resultados
+        </p>
+        <p class="text-sm text-slate-500 mt-1">
+          Decisión, ejecución y mejora continua
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Ejecutar cuando el DOM esté listo
+const initAnimations = () => {
+  // Verificar que los elementos existan
+  const aboutLeft = document.querySelector('.about-left');
+  const aboutRight = document.querySelector('.about-right');
+  
+  if (!aboutLeft || !aboutRight) {
+    console.warn('About elements not found, skipping animations');
+    return;
+  }
+
+  // Animación del título con stagger
+  gsap.from('.about-title-line', {
+    scrollTrigger: {
+      trigger: '.about-left',
+      start: 'top 80%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    x: -80,
+    duration: 1,
+    stagger: 0.2,
+    ease: 'power3.out',
+    onComplete: function() {
+      gsap.set('.about-title-line', { clearProps: 'all' });
+    }
+  });
+
+  // Animación del texto descriptivo
+  gsap.from('.about-text', {
+    scrollTrigger: {
+      trigger: '.about-text',
+      start: 'top 85%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: 'power2.out',
+    onComplete: function() {
+      gsap.set('.about-text', { clearProps: 'all' });
+    }
+  });
+
+  // Animación de skills con stagger
+  gsap.from('.about-skill', {
+    scrollTrigger: {
+      trigger: '.about-skill',
+      start: 'top 90%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    scale: 0.5,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'back.out(1.7)',
+    onComplete: function() {
+      gsap.set('.about-skill', { clearProps: 'all' });
+    }
+  });
+
+  // Animación de las tarjetas
+  gsap.from('.about-card', {
+    scrollTrigger: {
+      trigger: '.about-right',
+      start: 'top 80%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    x: 80,
+    rotation: 5,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: 'power3.out',
+    onComplete: function() {
+      gsap.set('.about-card', { clearProps: 'all' });
+    }
+  });
+};
+
+// Ejecutar inmediatamente si el DOM está listo, o esperar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+  // Usar setTimeout para asegurar que Astro haya hidratado los componentes
+  setTimeout(initAnimations, 100);
+}
+</script>
