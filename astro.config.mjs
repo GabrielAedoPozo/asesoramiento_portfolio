@@ -1,11 +1,10 @@
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
   site: 'https://aedoconsulting.com',
-  base: '/',
 });
