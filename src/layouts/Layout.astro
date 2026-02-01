@@ -57,8 +57,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="theme-color" content="#2563eb" />
 		<meta name="color-scheme" content="light" />
 		
-		<!-- Links -->
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- Favicon para todas las plataformas -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+		<link rel="icon" type="image/x-icon" href="/favicon.png" />
+		<link rel="shortcut icon" href="/favicon.png" />
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="alternate" hreflang="es" href={canonicalURL} />
 		<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="Roald Aedo - Feed RSS" />
@@ -74,7 +77,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="apple-mobile-web-app-title" content="Roald Aedo" />
-		<link rel="apple-touch-icon" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/favicon.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="/favicon.png" />
+		<link rel="apple-touch-icon" sizes="120x120" href="/favicon.png" />
 		
 		<!-- Structured Data (JSON-LD) -->
 		<script type="application/ld+json">
