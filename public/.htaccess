@@ -1,0 +1,70 @@
+# Optimizaciones SEO y rendimiento para Apache
+
+# Habilitar compresión GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+    AddOutputFilterByType DEFLATE application/rss+xml application/atom+xml image/svg+xml
+</IfModule>
+
+# Cache de navegadores
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 day"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+</IfModule>
+
+# Encabezados de control de caché
+<IfModule mod_headers.c>
+    Header set Cache-Control "max-age=31536000, public" ".css$|.js$|.jpg$|.jpeg$|.png$|.gif$|.ico$|.woff$|.woff2$|.ttf$|.svg$"
+    Header set Cache-Control "max-age=86400, public" ".html$"
+    Header set X-UA-Compatible "IE=Edge,chrome=1"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Remover x-powered-by
+<IfModule mod_headers.c>
+    Header always unset "X-Powered-By"
+    Header unset "X-Powered-By"
+</IfModule>
+
+# Redireccionamientos importantes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Forzar HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Remover www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    
+    # Trailing slash para directories
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+</IfModule>
+
+# Bloquear acceso a archivos sensibles
+<FilesMatch "^\.|^#.*#|~$|\.seo$|\.config$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

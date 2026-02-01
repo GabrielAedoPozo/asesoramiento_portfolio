@@ -3,16 +3,154 @@ import "../styles/global.css";
 import '@fontsource/onest/400.css';
 import '@fontsource/onest/500.css';
 import '@fontsource/onest/600.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	url?: string;
+}
+
+const { 
+	title = "Roald Aedo | Consultor Estratégico Senior - Optimización Industrial",
+	description = "Consultor multisectorial especializado en optimización de procesos y visión de mercado global. Transformando la complejidad industrial en eficiencia operativa.",
+	image = "/og-image.jpg",
+	url = "https://aedoconsulting.com"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
+		<!-- Meta básicos -->
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Roald Aedo | Asesor de Empresas</title>
+		
+		<!-- Información general -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="consultor empresarial, asesor estratégico, optimización de procesos, consultor Perú, asesoría empresarial, eficiencia operativa, estrategia industrial" />
+		<meta name="author" content="Roald Aedo" />
+		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<meta name="language" content="es" />
+		
+		<!-- Open Graph / Social Media -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
+		<meta property="og:site_name" content="Roald Aedo Consulting" />
+		<meta property="og:locale" content="es_PE" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(image, Astro.site)} />
+		
+		<!-- Verificación y análisis -->
+		<meta name="theme-color" content="#2563eb" />
+		<meta name="color-scheme" content="light" />
+		
+		<!-- Links -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="alternate" hreflang="es" href={canonicalURL} />
+		<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="Roald Aedo - Feed RSS" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+		
+		<!-- Preload críticos -->
+		<link rel="preload" as="style" href="/global.css" />
+		<link rel="preload" as="image" href="/foto.JPG" />
+		
+		<!-- Apple specific -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-title" content="Roald Aedo" />
+		<link rel="apple-touch-icon" href="/favicon.svg" />
+		
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json">
+		{JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Roald Aedo",
+			"jobTitle": "Consultor Estratégico Senior",
+			"description": "Consultor multisectorial especializado en optimización de procesos y estrategia empresarial",
+			"url": "https://aedoconsulting.com",
+			"sameAs": [
+				"https://pe.linkedin.com/in/roald-aedo-a4829130",
+				"https://wa.me/51999000915"
+			],
+			"knowsAbout": [
+				"Optimización de procesos",
+				"Estrategia empresarial",
+				"Consultoría industrial",
+				"Eficiencia operativa",
+				"Visión de mercado global"
+			],
+			"image": "https://aedoconsulting.com/foto.JPG",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "Aedo Consulting"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+51999000915",
+				"contactType": "Customer Service"
+			}
+		})}
+		</script>
+		
+		<!-- Organization Schema -->
+		<script type="application/ld+json">
+		{JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Aedo Consulting",
+			"url": "https://aedoconsulting.com",
+			"logo": "https://aedoconsulting.com/logo.png",
+			"description": "Servicios de consultoría estratégica y optimización de procesos industriales",
+			"sameAs": [
+				"https://pe.linkedin.com/in/roald-aedo-a4829130"
+			],
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+51999000915",
+				"contactType": "Customer Service",
+				"email": "info@aedoconsulting.com"
+			},
+			"areaServed": "PE",
+			"knowsAbout": [
+				"Consultoría empresarial",
+				"Optimización industrial",
+				"Estrategia de mercado"
+			]
+		})}
+		</script>
+
+		<!-- BreadcrumbList Schema -->
+		<script type="application/ld+json">
+		{JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Inicio",
+					"item": "https://aedoconsulting.com"
+				}
+			]
+		})}
+		</script>
 	</head>
 	<body>
 		<slot />

@@ -1,0 +1,62 @@
+{
+  "site": {
+    "title": "Roald Aedo | Consultor Estratégico Senior - Optimización Industrial",
+    "description": "Consultor multisectorial especializado en optimización de procesos y visión de mercado global. Transformando la complejidad industrial en eficiencia operativa.",
+    "url": "https://aedoconsulting.com",
+    "language": "es",
+    "locale": "es_PE",
+    "type": "website",
+    "image": {
+      "url": "/og-image.jpg",
+      "width": 1200,
+      "height": 630,
+      "alt": "Roald Aedo - Consultor Estratégico"
+    },
+    "favicon": "/favicon.svg",
+    "themeColor": "#2563eb"
+  },
+  "contact": {
+    "email": "info@aedoconsulting.com",
+    "phone": "+51 999 000 915",
+    "whatsapp": "+51999000915"
+  },
+  "social": {
+    "linkedin": "https://pe.linkedin.com/in/roald-aedo-a4829130",
+    "twitter": "",
+    "facebook": "",
+    "instagram": ""
+  },
+  "keywords": [
+    "consultor empresarial",
+    "asesor estratégico",
+    "optimización de procesos",
+    "consultor Perú",
+    "asesoría empresarial",
+    "eficiencia operativa",
+    "estrategia industrial",
+    "transformación empresarial",
+    "mejora continua",
+    "gestión operacional",
+    "Roald Aedo",
+    "gerente comercial",
+    "consultor multisectorial"
+  ],
+  "services": [
+    "Consultoría Estratégica",
+    "Optimización de Procesos",
+    "Gestión Operativa",
+    "Desarrollo Comercial",
+    "Transformación Industrial",
+    "Mejora Continua"
+  ],
+  "expertise": [
+    "Optimización de procesos industriales",
+    "Estrategia empresarial",
+    "Consultoría comercial",
+    "Eficiencia operativa",
+    "Visión de mercado global",
+    "Gestión de equipos",
+    "Ventas estratégicas",
+    "Proyectos de alto impacto"
+  ]
+}

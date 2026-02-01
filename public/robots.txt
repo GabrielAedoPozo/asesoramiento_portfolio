@@ -1,0 +1,25 @@
+# Aedo Consulting - Robots.txt
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all bots
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /admin/
+
+# Specific optimizations for Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific optimizations for Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://aedoconsulting.com/sitemap.xml
+
+# Cache control
+Request-rate: 30/60
