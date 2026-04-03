@@ -1,12 +1,14 @@
----
-// RSS Feed para Astro
+import type { APIRoute } from 'astro';
 import rss from '@astrojs/rss';
 
-export async function GET(context) {
+// RSS Feed para Astro
+export const prerender = true;
+
+export const GET: APIRoute = async (context) => {
   return rss({
     title: 'Roald Aedo - Consultor Estratégico',
     description: 'Consultor multisectorial especializado en optimización de procesos y estrategia empresarial',
-    site: context.site,
+    site: context.site!,
     items: [
       {
         title: 'Optimización de Procesos Industriales',
@@ -32,4 +34,4 @@ export async function GET(context) {
     ],
     customData: `<language>es</language>`,
   });
-}
+};
