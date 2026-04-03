@@ -1,4 +1,5 @@
----
+import type { APIRoute } from 'astro';
+
 // sitemap.xml.ts - Sitemap dinámico
 export const prerender = true;
 
@@ -8,7 +9,7 @@ const pages = [
 
 const siteUrl = 'https://aedoconsulting.com';
 
-export async function GET() {
+export const GET: APIRoute = async () => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
@@ -27,4 +28,4 @@ export async function GET() {
       'Cache-Control': 'max-age=3600'
     }
   });
-}
+};
